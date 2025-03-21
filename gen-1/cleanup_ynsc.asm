@@ -1,7 +1,4 @@
-;include "version/yellow.asm"
-;include "version/yellow11.asm"
-;include "version/yellow12.asm"
-include "version/yellow13.asm"
+include "version/_current.asm"
 include "ram/wram.asm"
 
 SECTION "CleanupYNSC", ROM0

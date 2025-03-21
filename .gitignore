@@ -1,3 +1,4 @@
 # compiled objects
 *.o
 *.gb
+_current.asm

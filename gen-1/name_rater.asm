@@ -1,12 +1,4 @@
-;include "version/red.asm"
-include "version/red11.asm"
-;include "version/green.asm"
-;include "version/green11.asm"
-;include "version/blue.asm"
-;include "version/yellow.asm"
-;include "version/yellow11.asm"
-;include "version/yellow12.asm"
-;include "version/yellow13.asm"
+include "version/_current.asm"
 include "ram/wram.asm"
 
 SECTION "NameRater", ROM0

@@ -1,8 +1,10 @@
 DEF ReloadMapData EQU $30cf
 DEF Bankswitch EQU $3636
+DEF FillMemory EQU $3740
 DEF JoypadLowSensitivity EQU $388f
 DEF AddNTimes EQU $3ae5
 DEF RestoreScreenTilesAndReloadTilePatterns EQU $3e02
+DEF GiveItem EQU $3e72
 DEF GivePokemon EQU $3e8c
 
 DEF DisplayNameRaterScreen EQU $660d

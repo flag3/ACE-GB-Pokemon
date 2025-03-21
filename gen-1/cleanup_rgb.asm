@@ -1,8 +1,4 @@
-;include "version/red.asm"
-include "version/red11.asm"
-;include "version/green.asm"
-;include "version/green11.asm"
-;include "version/blue.asm"
+include "version/_current.asm"
 include "ram/wram.asm"
 
 SECTION "CleanupRGB", ROM0
