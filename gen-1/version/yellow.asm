@@ -1,4 +1,4 @@
-DEF FillMemory EQU $16cd
+DEF FillMemory EQU $16c6
 DEF ReloadMapData EQU $2ffd;
 DEF JoypadLowSensitivity EQU $383f
 DEF AddNTimes EQU $3a95
