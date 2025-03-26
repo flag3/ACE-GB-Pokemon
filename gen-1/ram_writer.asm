@@ -56,8 +56,8 @@ PrintHex:
     or   "A"
     ld   [hl+],a
     ret
-Init:
-    ld   hl,Initial
+RAMWriter:
+    ld   hl,$d000
 Display:
     call HandleInput
     push hl

@@ -2,7 +2,6 @@ DEF wTileMap EQU $c3a0
 DEF wListScrollOffset EQU $cc36
 DEF wCurPartySpecies EQU $cf78
 DEF wWhichPokemon EQU $cf79
-DEF Initial EQU $d000
 DEF wPartyCount EQU $d123
 DEF wPartySpecies EQU $d124
 DEF wNumBagItems EQU $d2a1
