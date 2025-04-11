@@ -2,7 +2,7 @@
 
 # All available versions
 GEN1_VERSIONS := red red11 blue green green11 yellow yellow13
-GEN2_VERSIONS := crystal
+GEN2_VERSIONS := gold crystal
 
 # Version file paths
 GEN1_VERSION_INCLUDE = gen-1/version/_current.asm
@@ -26,10 +26,11 @@ GB_YELLOW_FILES := $(foreach base,$(GEN1_BASE_NAMES),gen-1/$(base)_yellow.gb)
 GB_YELLOW13_FILES := $(foreach base,$(GEN1_BASE_NAMES),gen-1/$(base)_yellow13.gb)
 
 # Gen 2 GB files
+GB_GOLD_FILES := $(foreach base,$(GEN2_BASE_NAMES),gen-2/$(base)_gold.gb)
 GB_CRYSTAL_FILES := $(foreach base,$(GEN2_BASE_NAMES),gen-2/$(base)_crystal.gb)
 
 # All GB files
-GB_ALL_FILES := $(GB_RED_FILES) $(GB_RED11_FILES) $(GB_BLUE_FILES) $(GB_GREEN_FILES) $(GB_GREEN11_FILES) $(GB_YELLOW_FILES) $(GB_YELLOW13_FILES) $(GB_CRYSTAL_FILES)
+GB_ALL_FILES := $(GB_RED_FILES) $(GB_RED11_FILES) $(GB_BLUE_FILES) $(GB_GREEN_FILES) $(GB_GREEN11_FILES) $(GB_YELLOW_FILES) $(GB_YELLOW13_FILES) $(GB_GOLD_FILES) $(GB_CRYSTAL_FILES)
 
 # Main target - build all versions by default
 all: check-all-versions $(GB_ALL_FILES)
@@ -100,6 +101,13 @@ gen-1/%_yellow13.gb: gen-1/%.asm gen-1/version/yellow13.asm
 	@rm -f gen-1/$*.o
 
 # Gen 2 pattern rules
+gen-2/%_gold.gb: gen-2/%.asm gen-2/version/gold.asm
+	@echo "Building $< for version gold..."
+	@cp gen-2/version/gold.asm $(GEN2_VERSION_INCLUDE)
+	@rgbasm -i gen-2/ -o gen-2/$*.o $<
+	@rgblink -o $@ gen-2/$*.o
+	@rm -f gen-2/$*.o
+
 gen-2/%_crystal.gb: gen-2/%.asm gen-2/version/crystal.asm
 	@echo "Building $< for version crystal..."
 	@cp gen-2/version/crystal.asm $(GEN2_VERSION_INCLUDE)
@@ -131,5 +139,6 @@ help:
 	@echo "  make blue     - Build for Blue"
 	@echo "  make yellow   - Build for Yellow v1.0"
 	@echo "  make yellow13 - Build for Yellow v1.1, v1.2, v1.3"
+	@echo "  make gold     - Build for Gold"
 	@echo "  make crystal  - Build for Crystal"
 	@echo "  make clean    - Clean all built files"

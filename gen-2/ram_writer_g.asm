@@ -1,10 +1,10 @@
-include "version/crystal.asm"
+include "version/gold.asm"
 include "constants/charmap.asm"
 
 SECTION "RAMWriter", ROM0
 
-load "", wram0[$c800]
-RAMWriter:
+load "", wramx[$d6e6]
+Init:
     call SetDefaultBGPAndOBP
     call WaitBGMap
     call LoadStandardFont
@@ -13,7 +13,7 @@ RAMWriter:
     ld   hl,vTiles2TileA
     ld   bc,$3e19
     call Get2bbpViaHDMA
-    ldh  a,[$ff9d]
+    ldh  a,[$ff9f]
     push af
     ld   hl,$d000
 Display:
@@ -24,7 +24,7 @@ Display:
     push hl
     pop  de
     ld   hl,wTilemap + $09
-    ldh  a,[$ff9d]
+    ldh  a,[$ff9f]
     call OpenSRAM
     call PrintHex
     ld   bc,$000c
@@ -52,7 +52,7 @@ Display:
     jr   Display
 HandleInput:
     call JoyTextDelay_ForcehJoyDown
-    ldh  a,[$ffa9]
+    ldh  a,[$ffab]
     ld   e,a
     ld   bc,$0001
     rlca
@@ -73,9 +73,7 @@ HandleInput:
     pop  hl
     pop  af
     rst  $10
-    ld   a,$f9
-    ldh  [$ff70],a
-    jp   ReturnToMapFromSubMenu
+    ret
 .checkIfaButtonOrSelectButtonPressed:
     ld   a,e
     rrca
@@ -85,7 +83,7 @@ HandleInput:
     jr   nc,.aButtonPressedSelectButtonNotPressed
     jp   hl
 .aButtonPressedSelectButtonNotPressed:
-    ldh  a,[$ff9d]
+    ldh  a,[$ff9f]
     call OpenSRAM
     ld   a,c
     add  a,[hl]
@@ -104,7 +102,7 @@ HandleInput:
     ld   h,a
     ret
 .aButtonNotPressedSelectButtonPressed:
-    ldh  a,[$ff9d]
+    ld   a,[$ff9f]
     add  a,c
     rst  $10
     ret
@@ -117,5 +115,5 @@ PrintHex:
     and  $0f
     add  a,"０"
     or   "A"
-    ld   [hl+],a
+    ld  [hl+],a
     ret

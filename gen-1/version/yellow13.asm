@@ -1,5 +1,5 @@
 DEF FillMemory EQU $16cc
-DEF ReloadMapData EQU $3002;
+DEF ReloadMapData EQU $3002
 DEF JoypadLowSensitivity EQU $3840
 DEF AddNTimes EQU $3a96
 DEF RestoreScreenTilesAndReloadTilePatterns EQU $3dce
