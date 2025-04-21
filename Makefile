@@ -6,7 +6,6 @@ GEN2_VERSIONS := gold crystal
 
 # Version file paths
 GEN1_VERSION_INCLUDE = gen-1/version/_current.asm
-GEN2_VERSION_INCLUDE = gen-2/version/_current.asm
 
 # Find all ASM source files (exclude directories and included files)
 GEN1_ASM_SRC := $(filter-out gen-1/constants/% gen-1/ram/% gen-1/version/%,$(wildcard gen-1/*.asm))
@@ -17,23 +16,22 @@ GEN1_BASE_NAMES := $(notdir $(basename $(GEN1_ASM_SRC)))
 GEN2_BASE_NAMES := $(notdir $(basename $(GEN2_ASM_SRC)))
 
 # Generate versioned GB file paths for each version
-GB_RED_FILES := $(foreach base,$(GEN1_BASE_NAMES),gen-1/$(base)_red.gb)
-GB_RED11_FILES := $(foreach base,$(GEN1_BASE_NAMES),gen-1/$(base)_red11.gb)
-GB_BLUE_FILES := $(foreach base,$(GEN1_BASE_NAMES),gen-1/$(base)_blue.gb)
-GB_GREEN_FILES := $(foreach base,$(GEN1_BASE_NAMES),gen-1/$(base)_green.gb)
-GB_GREEN11_FILES := $(foreach base,$(GEN1_BASE_NAMES),gen-1/$(base)_green11.gb)
-GB_YELLOW_FILES := $(foreach base,$(GEN1_BASE_NAMES),gen-1/$(base)_yellow.gb)
-GB_YELLOW13_FILES := $(foreach base,$(GEN1_BASE_NAMES),gen-1/$(base)_yellow13.gb)
+RED_FILES := $(foreach base,$(GEN1_BASE_NAMES),gen-1/$(base)_red.gb)
+RED11_FILES := $(foreach base,$(GEN1_BASE_NAMES),gen-1/$(base)_red11.gb)
+GREEN_FILES := $(foreach base,$(GEN1_BASE_NAMES),gen-1/$(base)_green.gb)
+GREEN11_FILES := $(foreach base,$(GEN1_BASE_NAMES),gen-1/$(base)_green11.gb)
+BLUE_FILES := $(foreach base,$(GEN1_BASE_NAMES),gen-1/$(base)_blue.gb)
+YELLOW_FILES := $(foreach base,$(GEN1_BASE_NAMES),gen-1/$(base)_yellow.gb)
+YELLOW13_FILES := $(foreach base,$(GEN1_BASE_NAMES),gen-1/$(base)_yellow13.gb)
 
 # Gen 2 GB files
-GB_GOLD_FILES := $(foreach base,$(GEN2_BASE_NAMES),gen-2/$(base)_gold.gb)
-GB_CRYSTAL_FILES := $(foreach base,$(GEN2_BASE_NAMES),gen-2/$(base)_crystal.gb)
+GEN2_FILES := $(foreach base,$(GEN2_BASE_NAMES),gen-2/$(base).gb)
 
 # All GB files
-GB_ALL_FILES := $(GB_RED_FILES) $(GB_RED11_FILES) $(GB_BLUE_FILES) $(GB_GREEN_FILES) $(GB_GREEN11_FILES) $(GB_YELLOW_FILES) $(GB_YELLOW13_FILES) $(GB_GOLD_FILES) $(GB_CRYSTAL_FILES)
+ALL_FILES := $(RED_FILES) $(RED11_FILES) $(GREEN_FILES) $(GREEN11_FILES) $(BLUE_FILES) $(YELLOW_FILES) $(YELLOW13_FILES) $(GEN2_FILES)
 
 # Main target - build all versions by default
-all: check-all-versions $(GB_ALL_FILES)
+all: check-all-versions $(ALL_FILES)
 
 # Check all version files exist
 check-all-versions:
@@ -101,16 +99,8 @@ gen-1/%_yellow13.gb: gen-1/%.asm gen-1/version/yellow13.asm
 	@rm -f gen-1/$*.o
 
 # Gen 2 pattern rules
-gen-2/%_gold.gb: gen-2/%.asm gen-2/version/gold.asm
+gen-2/%.gb: gen-2/%.asm
 	@echo "Building $< for version gold..."
-	@cp gen-2/version/gold.asm $(GEN2_VERSION_INCLUDE)
-	@rgbasm -i gen-2/ -o gen-2/$*.o $<
-	@rgblink -o $@ gen-2/$*.o
-	@rm -f gen-2/$*.o
-
-gen-2/%_crystal.gb: gen-2/%.asm gen-2/version/crystal.asm
-	@echo "Building $< for version crystal..."
-	@cp gen-2/version/crystal.asm $(GEN2_VERSION_INCLUDE)
 	@rgbasm -i gen-2/ -o gen-2/$*.o $<
 	@rgblink -o $@ gen-2/$*.o
 	@rm -f gen-2/$*.o
@@ -121,12 +111,12 @@ $(GEN1_VERSIONS):
 	$(MAKE) $(foreach base,$(GEN1_BASE_NAMES),gen-1/$(base)_$@.gb)
 
 $(GEN2_VERSIONS):
-	$(MAKE) $(foreach base,$(GEN2_BASE_NAMES),gen-2/$(base)_$@.gb)
+	$(MAKE) $(foreach base,$(GEN2_BASE_NAMES),gen-2/@.gb)
 
 # Clean build files
 clean:
 	rm -f gen-1/*.o gen-1/*_*.gb $(GEN1_VERSION_INCLUDE)
-	rm -f gen-2/*.o gen-2/*_*.gb $(GEN2_VERSION_INCLUDE)
+	rm -f gen-2/*.o gen-2/*.gb
 
 # Show available versions
 help:

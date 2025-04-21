@@ -9,5 +9,7 @@ DEF SetDefaultBGPAndOBP EQU $32c5
 DEF JoyTextDelay_ForcehJoyDown EQU $351b
 
 DEF FontExtra EQU $4000
+DEF ReceiveKeyItem EQU $55d7
 DEF vTiles2TileA EQU $9600
 DEF wTilemap EQU $c4a0
+DEF wCurItem EQU $d0c6
