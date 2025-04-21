@@ -17,3 +17,6 @@ DEF wTilemap EQU $c3a0
 DEF wCurItem EQU $cffc
 DEF wPlayerName EQU $d1b5
 DEF wPartyMon1OT EQU $db10
+
+DEF hROMBank EQU $ff9f
+DEF hJoyLast EQU $ffab

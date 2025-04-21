@@ -100,7 +100,7 @@ gen-1/%_yellow13.gb: gen-1/%.asm gen-1/version/yellow13.asm
 
 # Gen 2 pattern rules
 gen-2/%.gb: gen-2/%.asm
-	@echo "Building $< for version gold..."
+	@echo "Building $< for version gen-2..."
 	@rgbasm -i gen-2/ -o gen-2/$*.o $<
 	@rgblink -o $@ gen-2/$*.o
 	@rm -f gen-2/$*.o

@@ -1,13 +1,14 @@
 include "version/_current.asm"
 include "constants/charmap.asm"
 include "ram/wram.asm"
+include "ram/hram.asm"
 
 SECTION "RAMWriter", ROM0
 
 load "", wramx[$d5e9]
 HandleInput:
     call JoypadLowSensitivity
-    ldh  a,[$ffb3]
+    ldh  a,[hJoyPressed]
     ld   bc,$0001
     rlca
     jr   c,.checkIfaButtonOrbButtonPressed

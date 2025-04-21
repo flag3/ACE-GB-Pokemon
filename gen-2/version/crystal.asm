@@ -13,3 +13,6 @@ DEF ReceiveKeyItem EQU $55d7
 DEF vTiles2TileA EQU $9600
 DEF wTilemap EQU $c4a0
 DEF wCurItem EQU $d0c6
+
+DEF hROMBank EQU $ff9d
+DEF hJoyLast EQU $ffa9

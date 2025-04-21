@@ -1,5 +1,6 @@
 include "version/crystal.asm"
 include "constants/charmap.asm"
+include "constants/hardware_constants.asm"
 
 SECTION "RAMWriter", ROM0
 
@@ -13,7 +14,7 @@ RAMWriter:
     ld   hl,vTiles2TileA
     ld   bc,$3e19
     call Get2bbpViaHDMA
-    ldh  a,[$ff9d]
+    ldh  a,[hROMBank]
     push af
     ld   hl,$d000
 Display:
@@ -24,7 +25,7 @@ Display:
     push hl
     pop  de
     ld   hl,wTilemap + $09
-    ldh  a,[$ff9d]
+    ldh  a,[hROMBank]
     call OpenSRAM
     call PrintHex
     ld   bc,$000c
@@ -52,7 +53,7 @@ Display:
     jr   Display
 HandleInput:
     call JoyTextDelay_ForcehJoyDown
-    ldh  a,[$ffa9]
+    ldh  a,[hJoyLast]
     ld   e,a
     ld   bc,$0001
     rlca
@@ -74,7 +75,7 @@ HandleInput:
     pop  af
     rst  $10
     ld   a,$f9
-    ldh  [$ff70],a
+    ldh  [rSVBK],a
     jp   ReturnToMapFromSubMenu
 .checkIfaButtonOrSelectButtonPressed:
     ld   a,e
@@ -85,7 +86,7 @@ HandleInput:
     jr   nc,.aButtonPressedSelectButtonNotPressed
     jp   hl
 .aButtonPressedSelectButtonNotPressed:
-    ldh  a,[$ff9d]
+    ldh  a,[hROMBank]
     call OpenSRAM
     ld   a,c
     add  a,[hl]
@@ -104,7 +105,7 @@ HandleInput:
     ld   h,a
     ret
 .aButtonNotPressedSelectButtonPressed:
-    ldh  a,[$ff9d]
+    ldh  a,[hROMBank]
     add  a,c
     rst  $10
     ret

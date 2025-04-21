@@ -8,5 +8,5 @@ ReceiveTM17AsKeyItem:
   ld   [wCurItem],a;
   ld   a,$03;
   ld   hl,ReceiveKeyItem
-  rst  0x08;
+  rst  $08;
   ret;

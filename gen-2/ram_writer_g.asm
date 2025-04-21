@@ -13,7 +13,7 @@ Init:
     ld   hl,vTiles2TileA
     ld   bc,$3e19
     call Get2bbpViaHDMA
-    ldh  a,[$ff9f]
+    ldh  a,[hROMBank]
     push af
     ld   hl,$d000
 Display:
@@ -24,7 +24,7 @@ Display:
     push hl
     pop  de
     ld   hl,wTilemap + $09
-    ldh  a,[$ff9f]
+    ldh  a,[hROMBank]
     call OpenSRAM
     call PrintHex
     ld   bc,$000c
@@ -52,7 +52,7 @@ Display:
     jr   Display
 HandleInput:
     call JoyTextDelay_ForcehJoyDown
-    ldh  a,[$ffab]
+    ldh  a,[hJoyLast]
     ld   e,a
     ld   bc,$0001
     rlca
@@ -83,7 +83,7 @@ HandleInput:
     jr   nc,.aButtonPressedSelectButtonNotPressed
     jp   hl
 .aButtonPressedSelectButtonNotPressed:
-    ldh  a,[$ff9f]
+    ldh  a,[hROMBank]
     call OpenSRAM
     ld   a,c
     add  a,[hl]
@@ -102,7 +102,7 @@ HandleInput:
     ld   h,a
     ret
 .aButtonNotPressedSelectButtonPressed:
-    ld   a,[$ff9f]
+    ld   a,[hROMBank]
     add  a,c
     rst  $10
     ret

@@ -10,23 +10,23 @@ ReceiveTM17AsKeyItem:
   ld   hl,ReceiveKeyItem
   rst  $08;
   ret;
-  db 0x00, 0x00, 0x00, 0x00
+  db $00, $00, $00, $00
 
 Copy:
   ld   bc,$0006;
   ld   de,wPartyMon1OT;
   ld   hl,wPlayerName;
   jp   CopyBytes;
-  db 0x00, 0x00, 0x00, 0x00
+  db $00, $00, $00, $00
 
 Init:
-  ld   a,0x22;
+  ld   a,$22;
   ld   hl,script;
   jp   CallScript;
 script:
-  db 0x47;
-  db 0x2E, 0xAF, 0x05;
-  db 0x2D, 0x3F, 0x0A, 0x00, 0x00;
-  db 0x2D, 0x15, 0x0A, 0x00, 0x01, 0x49, 0x6E, 0x4E, 0x6E;
-  db 0x2F, 0x2C, 0x6E;
-  db 0x49, 0x90;
+  db $47;
+  db $2e, $af, $05;
+  db $2d, $3f, $0a, $00, $00;
+  db $2d, $15, $0a, $00, $01, $49, $6e, $4e, $6e;
+  db $2f, $2c, $6e;
+  db $49, $90;
