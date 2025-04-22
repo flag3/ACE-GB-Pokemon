@@ -111,7 +111,7 @@ $(GEN1_VERSIONS):
 	$(MAKE) $(foreach base,$(GEN1_BASE_NAMES),gen-1/$(base)_$@.gb)
 
 $(GEN2_VERSIONS):
-	$(MAKE) $(foreach base,$(GEN2_BASE_NAMES),gen-2/@.gb)
+	$(MAKE) $(foreach base,$(GEN2_BASE_NAMES),gen-2/$(base).gb)
 
 # Clean build files
 clean:
