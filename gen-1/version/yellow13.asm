@@ -13,3 +13,5 @@ DEF ChoosePlayerName EQU $675F
 DEF ChooseRivalName EQU $67B3
 
 DEF ItemUseEvoStone EQU $587d
+
+DEF InGameTrade EQU $5af5

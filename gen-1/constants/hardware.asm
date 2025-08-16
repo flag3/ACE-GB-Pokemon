@@ -1,0 +1,1 @@
+DEF MBC1RomBank EQU $2000

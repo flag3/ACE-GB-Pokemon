@@ -1,5 +1,8 @@
 DEF wTileMap EQU $c3a0
 DEF wListScrollOffset EQU $cc36
+DEF wInGameTradeGiveMonSpecies EQU $cd0f
+DEF wInGameTradeReceiveMonSpecies EQU $cd25
+DEF wWhichTrade EQU $cd3d
 DEF wCurPartySpecies EQU $cf78
 DEF wWhichPokemon EQU $cf79
 DEF wLinkState EQU $d0f0
@@ -11,3 +14,4 @@ DEF wPokedexSeenEnd EQU $d2a1
 DEF wNumBagItems EQU $d2a1
 DEF HS_CELADON_MANSION_EEVEE_GIFT EQU $d52d
 DEF wPlayerStarter EQU $d696
+DEF wCompletedInGameTradeFlags EQU $d6b6
