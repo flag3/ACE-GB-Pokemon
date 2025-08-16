@@ -1,3 +1,4 @@
+DEF PlayDefaultMusic EQU $22e7
 DEF ReloadMapData EQU $30cf
 DEF Bankswitch EQU $3636
 DEF FillMemory EQU $3740
@@ -10,3 +11,5 @@ DEF GivePokemon EQU $3e8c
 DEF DisplayNameRaterScreen EQU $660d
 DEF ChoosePlayerName EQU $69ec
 DEF ChooseRivalName EQU $6a40
+
+DEF ItemUseEvoStone EQU $5b9e

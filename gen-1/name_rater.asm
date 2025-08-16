@@ -3,7 +3,6 @@ include "ram/wram.asm"
 
 SECTION "NameRater", ROM0
 
-load "", wramx[$d000]
 NameRater:
     xor  a
     ld   b,a

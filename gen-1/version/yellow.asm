@@ -1,4 +1,5 @@
 DEF FillMemory EQU $16c6
+DEF PlayDefaultMusic EQU $2194
 DEF ReloadMapData EQU $2ffd
 DEF JoypadLowSensitivity EQU $383f
 DEF AddNTimes EQU $3a95
@@ -10,3 +11,5 @@ DEF Bankswitch EQU $3e7d
 DEF DisplayNameRaterScreen EQU $6381
 DEF ChoosePlayerName EQU $675F
 DEF ChooseRivalName EQU $67B3
+
+DEF ItemUseEvoStone EQU $5886
