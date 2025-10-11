@@ -1,11 +1,10 @@
+include "macros/farcall.asm"
 include "version/_current.asm"
 include "ram/wram.asm"
 
 SECTION "ChangeRivalName", ROM0
 
 ChangeRivalName:
-    ld   b,$01
-    ld   hl,ChooseRivalName
-    call Bankswitch
+    farcall ChooseRivalName
     call ReloadMapData
     jp   RestoreScreenTilesAndReloadTilePatterns

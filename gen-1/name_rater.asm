@@ -1,3 +1,4 @@
+include "macros/farcall.asm"
 include "version/_current.asm"
 include "ram/wram.asm"
 
@@ -13,6 +14,4 @@ NameRater:
     call AddNTimes
     ld   a,[hl]
     ld   [wCurPartySpecies],a
-    ld   b,$01
-    ld   hl,DisplayNameRaterScreen
-    jp   Bankswitch
+    farjp DisplayNameRaterScreen

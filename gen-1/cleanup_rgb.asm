@@ -1,3 +1,4 @@
+include "macros/farcall.asm"
 include "version/_current.asm"
 include "ram/wram.asm"
 
@@ -5,9 +6,7 @@ SECTION "CleanupRGB", ROM0
 
 load "ChangeRivalName", wramx[$d000]
 ChangeRivalName:
-    ld   b,$01
-    ld   hl,ChooseRivalName
-    call Bankswitch
+    farcall ChooseRivalName
     call ReloadMapData
     jp   RestoreScreenTilesAndReloadTilePatterns
     db   $00, $00

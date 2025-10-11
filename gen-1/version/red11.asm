@@ -8,8 +8,11 @@ DEF RestoreScreenTilesAndReloadTilePatterns EQU $3ddc
 DEF GiveItem EQU $3e4c
 DEF GivePokemon EQU $3e66
 
+DEF DisplayNameRaterScreenBank EQU $01
 DEF DisplayNameRaterScreen EQU $649f
+DEF ChoosePlayerNameBank EQU $01
 DEF ChoosePlayerName EQU $687e
+DEF ChooseRivalNameBank EQU $01
 DEF ChooseRivalName EQU $68d2
 
 DEF ItemUseEvoStone EQU $5b77

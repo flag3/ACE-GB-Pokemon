@@ -1,3 +1,4 @@
+include "macros/farcall.asm"
 include "version/_current.asm"
 include "ram/wram.asm"
 
@@ -5,10 +6,8 @@ SECTION "CleanupY", ROM0
 
 load "ChangeName", wramx[$d000]
 ChangeName:
-    ld   b,$01
-    ld   hl,ChoosePlayerName
-    ;ld   hl,ChooseRivalName
-    call Bankswitch
+    farcall ChoosePlayerName
+    ;farcall ChooseRivalName
     call ReloadMapData
     jp   RestoreScreenTilesAndReloadTilePatterns
     db   $00, $00
