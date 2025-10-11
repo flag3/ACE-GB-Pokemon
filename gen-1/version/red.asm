@@ -1,3 +1,5 @@
+include "macros/def_banked.asm"
+
 DEF PlayDefaultMusic EQU $0d9b
 DEF ReloadMapData EQU $1b86
 DEF Bankswitch EQU $3620
@@ -8,12 +10,9 @@ DEF RestoreScreenTilesAndReloadTilePatterns EQU $3dee
 DEF GiveItem EQU $3e5e
 DEF GivePokemon EQU $3e78
 
-DEF DisplayNameRaterScreenBank EQU $01
-DEF DisplayNameRaterScreen EQU $64fa
-DEF ChoosePlayerNameBank EQU $01
-DEF ChoosePlayerName EQU $68d9
-DEF ChooseRivalNameBank EQU $01
-DEF ChooseRivalName EQU $692d
+DEFBanked DisplayNameRaterScreen, $01, $64fa
+DEFBanked ChoosePlayerName, $01, $68d9
+DEFBanked ChooseRivalName, $01, $692d
 
 DEF ItemUseEvoStone EQU $5b77
 
