@@ -1,3 +1,5 @@
+include "macros/def_banked.asm"
+
 DEF Get2bbpViaHDMA EQU $0e5b
 DEF LoadStandardFont EQU $0d87
 DEF LoadFontsExtra EQU $0d95
@@ -9,8 +11,9 @@ DEF WaitBGMap EQU $33ae
 DEF SetDefaultBGPAndOBP EQU $34a8
 DEF JoyTextDelay_ForcehJoyDown EQU $36f4
 
-DEF FontExtra EQU $40f2
-DEF ReceiveKeyItem EQU $5631
+DEFBanked ReceiveKeyItem, $03, $5631
+
+DEFBanked FontExtra, $3e, $40f2
 
 DEF vTiles2TileA EQU $9600
 DEF wTilemap EQU $c3a0

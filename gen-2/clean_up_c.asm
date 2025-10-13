@@ -1,3 +1,4 @@
+include "macros/farcall.asm"
 include "version/crystal.asm"
 
 SECTION "Cleanup", ROM0
@@ -6,7 +7,5 @@ load "", wramx[$d300]
 ReceiveTM17AsKeyItem:
   ld   a,$d0;
   ld   [wCurItem],a;
-  ld   a,$03;
-  ld   hl,ReceiveKeyItem
-  rst  $08;
+  farcall ReceiveKeyItem
   ret;

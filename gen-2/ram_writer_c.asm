@@ -1,6 +1,8 @@
+include "home/header.asm"
 include "version/crystal.asm"
 include "constants/charmap.asm"
 include "constants/hardware_constants.asm"
+include "macros/code.asm"
 
 SECTION "RAMWriter", ROM0
 
@@ -12,7 +14,7 @@ RAMWriter:
     call LoadFontsExtra
     ld   de,FontExtra
     ld   hl,vTiles2TileA
-    ld   bc,$3e19
+    lb   bc,FontExtraBank,$19
     call Get2bbpViaHDMA
     ldh  a,[hROMBank]
     push af
@@ -73,7 +75,7 @@ HandleInput:
     jr   nc,.checkIfaButtonOrSelectButtonPressed
     pop  hl
     pop  af
-    rst  $10
+    rst  Bankswitch
     ld   a,$f9
     ldh  [rSVBK],a
     jp   ReturnToMapFromSubMenu
@@ -107,7 +109,7 @@ HandleInput:
 .aButtonNotPressedSelectButtonPressed:
     ldh  a,[hROMBank]
     add  a,c
-    rst  $10
+    rst  Bankswitch
     ret
 PrintHex:
     push af

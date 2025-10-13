@@ -1,5 +1,7 @@
+include "home/header.asm"
 include "version/gold.asm"
 include "constants/charmap.asm"
+include "macros/code.asm"
 
 SECTION "RAMWriter", ROM0
 
@@ -11,7 +13,7 @@ Init:
     call LoadFontsExtra
     ld   de,FontExtra
     ld   hl,vTiles2TileA
-    ld   bc,$3e19
+    lb   bc,FontExtraBank,$19
     call Get2bbpViaHDMA
     ldh  a,[hROMBank]
     push af
@@ -72,7 +74,7 @@ HandleInput:
     jr   nc,.checkIfaButtonOrSelectButtonPressed
     pop  hl
     pop  af
-    rst  $10
+    rst  Bankswitch
     ret
 .checkIfaButtonOrSelectButtonPressed:
     ld   a,e
@@ -104,7 +106,7 @@ HandleInput:
 .aButtonNotPressedSelectButtonPressed:
     ld   a,[hROMBank]
     add  a,c
-    rst  $10
+    rst  Bankswitch
     ret
 PrintHex:
     push af

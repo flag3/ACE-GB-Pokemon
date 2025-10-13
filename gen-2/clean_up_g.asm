@@ -1,3 +1,4 @@
+include "macros/farcall.asm"
 include "version/gold.asm"
 
 SECTION "Cleanup", ROM0
@@ -6,9 +7,7 @@ load "", wramx[$dd90]
 ReceiveTM17AsKeyItem:
   ld   a,$e1;
   ld   [wCurItem],a;
-  ld   a,$03;
-  ld   hl,ReceiveKeyItem
-  rst  $08;
+  farcall ReceiveKeyItem
   ret;
   db $00, $00, $00, $00
 

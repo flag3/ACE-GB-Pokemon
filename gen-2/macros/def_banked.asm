@@ -1,0 +1,4 @@
+MACRO DEFBanked
+  DEF \1Bank EQU \2
+  DEF \1 EQU \3
+ENDM
