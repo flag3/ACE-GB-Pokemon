@@ -19,7 +19,7 @@ CustomInGameTrade:
     ld   [wInGameTradeGiveMonSpecies],a
     ld   a,[hl+]
     ld   [wInGameTradeReceiveMonSpecies],a
-    ld   a,$1c
+    ld   a,InGameTradeBank
     ldh  [hLoadedROMBank],a
     ld   [MBC1RomBank],a
     xor  a

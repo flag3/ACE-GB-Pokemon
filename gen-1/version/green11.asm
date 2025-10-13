@@ -16,4 +16,4 @@ DEFBanked ChooseRivalName, $01, $68d3
 
 DEF ItemUseEvoStone EQU $5b77
 
-DEF InGameTrade EQU $5fb7
+DEFBanked InGameTrade, $1c, $5fb7
