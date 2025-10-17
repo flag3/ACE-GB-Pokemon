@@ -16,7 +16,7 @@ HandleInput:
     dec  bc
     rlca
     jr   c,.checkIfaButtonOrbButtonPressed
-    ld   c,$f0
+    ld   c,-$10
     rlca
     jr   c,.checkIfaButtonOrbButtonPressed
     ld   bc,$0010
@@ -62,7 +62,7 @@ RAMWriter:
 Display:
     call HandleInput
     push hl
-    ld   de,$10000 - $0008
+    ld   de,-$0008
     add  hl,de
     push hl
     pop  de
