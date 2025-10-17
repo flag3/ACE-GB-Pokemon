@@ -1,3 +1,4 @@
+include "macros/code.asm"
 include "macros/farcall.asm"
 include "version/_current.asm"
 include "ram/wram.asm"
@@ -21,5 +22,5 @@ Remaining:
     ld   hl,HS_CELADON_MANSION_EEVEE_GIFT
     res  5,[hl]
     ld   [$D592],a
-    ld   bc,$6500
+    lb   bc,$65,00
     jp   GiveItem
