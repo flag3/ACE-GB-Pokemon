@@ -13,6 +13,10 @@ DEF JoyTextDelay_ForcehJoyDown EQU $36f4
 
 DEFBanked ReceiveKeyItem, $03, $5631
 
+DEFBanked GiftSpearowMail, $22, $6e2c
+DEFBanked GiftSpearowName, $22, $6e49
+DEFBanked GiftSpearowOTName, $22, $6e4e
+
 DEFBanked FontExtra, $3e, $40f2
 
 DEF vTiles2TileA EQU $9600

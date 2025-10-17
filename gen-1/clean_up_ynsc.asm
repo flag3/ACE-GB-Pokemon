@@ -22,5 +22,5 @@ Remaining:
     ld   hl,HS_CELADON_MANSION_EEVEE_GIFT
     res  5,[hl]
     ld   [$D592],a
-    lb   bc,$65,00
+    lb   bc,$65,0
     jp   GiveItem

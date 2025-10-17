@@ -4,7 +4,7 @@ include "ram/wram.asm"
 
 SECTION "NameRater", ROM0
 
-DEF POKEMON_INDEX EQU $00
+DEF POKEMON_INDEX EQU 0
 
 NameRater:
     xor  a

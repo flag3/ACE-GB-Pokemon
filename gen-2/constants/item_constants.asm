@@ -1,0 +1,1 @@
+DEF NO_ITEM EQU $00

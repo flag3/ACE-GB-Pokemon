@@ -19,5 +19,5 @@ Remaining:
     ld   [wPartyCount],a
     ld   a,[wPlayerStarter]
     ld   b,a
-    ld   c,$05
+    ld   c,5
     jp   GivePokemon

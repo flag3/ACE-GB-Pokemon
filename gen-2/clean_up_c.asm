@@ -5,7 +5,7 @@ SECTION "Cleanup", ROM0
 
 load "", wramx[$d300]
 ReceiveTM17AsKeyItem:
-  ld   a,$d0;
-  ld   [wCurItem],a;
+  ld   a,$d0
+  ld   [wCurItem],a
   farcall ReceiveKeyItem
-  ret;
+  ret

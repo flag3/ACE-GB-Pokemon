@@ -21,7 +21,7 @@ Init:
 Display:
     call HandleInput
     push hl
-    ld   de,$10000 - $0008
+    ld   de,-$0008
     add  hl,de
     push hl
     pop  de
@@ -63,7 +63,7 @@ HandleInput:
     dec  bc
     rlca
     jr   c,.checkIfaButtonOrSelectButtonPressed
-    ld   c,$f0
+    ld   c,-$10
     rlca
     jr   c,.checkIfaButtonOrSelectButtonPressed
     ld   bc,$0010
