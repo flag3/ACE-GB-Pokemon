@@ -20,8 +20,18 @@ DEFBanked GiftSpearowOTName, $22, $6e4e
 DEFBanked FontExtra, $3e, $40f2
 
 DEF vTiles2TileA EQU $9600
+
 DEF wTilemap EQU $c3a0
+DEF wWildMonMoves EQU $cc07
+DEF wTileDown EQU $ce97
+DEF wMenuSelection EQU $cedf
+DEF wMenuCursorY EQU $cf14
 DEF wCurItem EQU $cffc
+
+DEF wTempEnemyMonSpecies EQU $d0df
+DEF wEnemyMonMoves EQU $d0e3
+DEF wEnemyMonDVs EQU $d0e7
+DEF wBattleMode EQU $d108
 DEF wPlayerName EQU $d1b5
 DEF wPartyMon1OT EQU $db10
 
