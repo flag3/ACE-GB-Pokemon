@@ -8,8 +8,8 @@ include "version/gold.asm"
 SECTION "Cleanup", ROM0
 
 load "", wramx[$dd90]
-ReceiveTM17AsKeyItem:
-  ld   a,$e1
+ReceiveTM33AsKeyItem:
+  ld   a,TM33
   ld   [wCurItem],a
   farcall ReceiveKeyItem
   ret

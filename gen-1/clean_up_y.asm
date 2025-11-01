@@ -1,3 +1,4 @@
+include "constants/item_constants.asm"
 include "macros/farcall.asm"
 include "version/_current.asm"
 include "ram/wram.asm"
@@ -26,5 +27,5 @@ Remaining:
     ld   [$D592],a
     ld   a,$16
     ld   [HS_CELADON_MANSION_EEVEE_GIFT],a
-    ld   b,$65
+    ld   b,FALCON_BADGE
     jp   GiveItem

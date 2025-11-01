@@ -1,3 +1,4 @@
+include "constants/item_constants.asm"
 include "macros/code.asm"
 include "macros/farcall.asm"
 include "version/_current.asm"
@@ -22,5 +23,5 @@ Remaining:
     ld   hl,HS_CELADON_MANSION_EEVEE_GIFT
     res  5,[hl]
     ld   [$D592],a
-    lb   bc,$65,0
+    lb   bc,FALCON_BADGE,0
     jp   GiveItem
