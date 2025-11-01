@@ -12,13 +12,17 @@ DEF SetDefaultBGPAndOBP EQU $32c5
 DEF JoyTextDelay_ForcehJoyDown EQU $351b
 
 DEFBanked ReceiveKeyItem, $03, $55d7
+DEF CopyBoxmonToTempEnd EQU $688c
 
 DEFBanked FontExtra, $3e, $4000
 
 DEF vTiles2TileA EQU $9600
 
+DEFBanked sBox10, $03, $afde
+
 DEF wTilemap EQU $c4a0
 DEF wWildMonMoves EQU $c729
+DEF wOverwoldMapBlocks EQU $c800
 DEF wMenuSelection EQU $cf68
 DEF wMenuCursorY EQU $cf9d
 

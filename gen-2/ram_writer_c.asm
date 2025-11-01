@@ -3,11 +3,17 @@ include "version/crystal.asm"
 include "constants/charmap.asm"
 include "constants/hardware_constants.asm"
 include "macros/code.asm"
+include "macros/wram.asm"
 
-SECTION "RAMWriter", ROM0
+WRAM SetUp, $da47
+    ld   a,sBox10Bank
+    ld   bc,$00ba
+    ld   de,wOverwoldMapBlocks
+    ld   hl,sBox10
+    push de
+    jp   CopyBoxmonToTempEnd
 
-load "", wram0[$c800]
-RAMWriter:
+WRAM RAMWriter, $c800
     call SetDefaultBGPAndOBP
     call WaitBGMap
     call LoadStandardFont
