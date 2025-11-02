@@ -34,4 +34,5 @@ DEF wEnemyMonDVs EQU $d23d
 DEF wBattleMode EQU $d25e
 
 DEF hROMBank EQU $ff9d
+DEF hJoypadDown EQU $ffa4
 DEF hJoyLast EQU $ffa9

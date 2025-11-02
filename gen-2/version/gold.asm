@@ -36,4 +36,5 @@ DEF wPlayerName EQU $d1b5
 DEF wPartyMon1OT EQU $db10
 
 DEF hROMBank EQU $ff9f
+DEF hJoypadDown EQU $ffa6
 DEF hJoyLast EQU $ffab

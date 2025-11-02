@@ -1,8 +1,10 @@
 include "macros/wram.asm"
+include "constants/item_constants.asm"
+include "constants/hardware_constants.asm"
 include "version/crystal.asm"
 
 WRAM OAMDMACode, $d6e9
-    ldh  a, [$ff70]
+    ldh  a, [rSVBK]
     sub  a, $f9
     call z, RoutineAddr
     ld   a, $c4
@@ -32,7 +34,7 @@ WRAM SetUp, $dace
     jp   CopyBytes
 
 WRAM WalkingWalls, $db1f
-    ldh  a, [$ffa4]
+    ldh  a, [hJoypadDown]
     bit  1, a
     ret  z
     xor  a
@@ -49,7 +51,7 @@ WRAM CatchTrainerPokemon, $da86
     sub  [hl]
     ret  nz
     ld   b, a
-    ldh  a, [$ffa4]
+    ldh  a, [hJoypadDown]
     and  $04
     ret  z
     ld   c, a
@@ -80,7 +82,7 @@ WRAM EncounterSpecificPokemon, $da10
 
 WRAM RAMWriterInBattle, $da9e
     ld   a, [wMenuSelection]
-    cp   $d0
+    cp   TM17
     ret  nz
     ld   a, [$cf7f]
     cp   $d4
