@@ -3,21 +3,21 @@ include "constants/item_constants.asm"
 include "version/gold.asm"
 
 WRAM OAMDMACode, $d41b
-    call RoutineAddr
+    call Routine
     ld   a, $c3
     db   $18, $83
 
 WRAM Routine, $d422
     xor  a
-    call c, WalkingWallsAddr
+    call c, WalkingWalls
     xor  a
-    call c, CatchTrainerPokemonAddr
+    call c, CatchTrainerPokemon
     xor  a
-    call c, WildShinyAddr
+    call c, WildShiny
     xor  a
-    call c, EncounterSpecificPokemonAddr
+    call c, EncounterSpecificPokemon
     xor  a
-    call c, RAMWriterInBattleAddr
+    call c, RAMWriterInBattle
     ret
 
 WRAM SetUp, $d813
@@ -25,7 +25,7 @@ WRAM SetUp, $d813
     ld   hl, $ff80
     ld   [hl+], a
     ld   [hl], $76
-    ld   hl, OAMDMACodeAddr
+    ld   hl, OAMDMACode
     ld   de, $fff8
     ld   bc, $0007
     jp   CopyBytes

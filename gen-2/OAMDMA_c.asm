@@ -6,21 +6,21 @@ include "version/crystal.asm"
 WRAM OAMDMACode, $d6e9
     ldh  a, [rSVBK]
     sub  a, $f9
-    call z, RoutineAddr
+    call z, Routine
     ld   a, $c4
     db   $18, $83
 
 WRAM Routine, $d6f4
     xor  a
-    call c, WalkingWallsAddr
+    call c, WalkingWalls
     xor  a
-    call c, CatchTrainerPokemonAddr
+    call c, CatchTrainerPokemon
     xor  a
-    call c, WildShinyAddr
+    call c, WildShiny
     xor  a
-    call c, EncounterSpecificPokemonAddr
+    call c, EncounterSpecificPokemon
     xor  a
-    call c, RAMWriterInBattleAddr
+    call c, RAMWriterInBattle
     ret
 
 WRAM SetUp, $dace
@@ -28,7 +28,7 @@ WRAM SetUp, $dace
     ld   hl, $ff80
     ld   [hl+], a
     ld   [hl], $72
-    ld   hl, OAMDMACodeAddr
+    ld   hl, OAMDMACode
     ld   de, $fff4
     ld   bc, $000b
     jp   CopyBytes
