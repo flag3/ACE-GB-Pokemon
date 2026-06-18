@@ -7,6 +7,14 @@ GEN2_VERSIONS := gold crystal
 # Version file paths
 GEN1_VERSION_INCLUDE = gen-1/version/_current.asm
 
+# Checksum output
+ROM_SHA1_FILE := roms.sha1
+ifeq (,$(shell command -v sha1sum 2>/dev/null))
+SHA1 := shasum
+else
+SHA1 := sha1sum
+endif
+
 # Find all ASM source files (exclude directories and included files)
 GEN1_ASM_SRC := $(filter-out gen-1/constants/% gen-1/ram/% gen-1/version/%,$(wildcard gen-1/*.asm))
 GEN2_ASM_SRC := $(filter-out gen-2/constants/% gen-2/ram/% gen-2/version/%,$(wildcard gen-2/*.asm))
@@ -29,9 +37,12 @@ GEN2_FILES := $(foreach base,$(GEN2_BASE_NAMES),gen-2/$(base).gb)
 
 # All GB files
 ALL_FILES := $(RED_FILES) $(RED11_FILES) $(GREEN_FILES) $(GREEN11_FILES) $(BLUE_FILES) $(YELLOW_FILES) $(YELLOW13_FILES) $(GEN2_FILES)
+CHECKSUM_FILES := $(sort $(ALL_FILES))
 
-# Main target - build all versions by default
+# Main target - build all versions and write checksums by default
 all: check-all-versions $(ALL_FILES)
+	@$(SHA1) $(CHECKSUM_FILES) > $(ROM_SHA1_FILE)
+	@echo "Wrote $(ROM_SHA1_FILE)"
 
 # Check all version files exist
 check-all-versions:
@@ -121,7 +132,7 @@ clean:
 # Show available versions
 help:
 	@echo "Usage:"
-	@echo "  make          - Build for all versions"
+	@echo "  make          - Build for all versions and write roms.sha1"
 	@echo "  make red      - Build for Red v1.0"
 	@echo "  make red11    - Build for Red v1.1"
 	@echo "  make green    - Build for Green v1.0"
