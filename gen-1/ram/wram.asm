@@ -1,4 +1,9 @@
 DEF wTileMap EQU $c3a0
+DEF wTopMenuItemY EQU $cc24
+DEF wTopMenuItemX EQU $cc25
+DEF wCurrentMenuItem EQU $cc26
+DEF wMaxMenuItem EQU $cc28
+DEF wMenuWatchedKeys EQU $cc29
 DEF wListScrollOffset EQU $cc36
 DEF wInGameTradeGiveMonSpecies EQU $cd0f
 DEF wInGameTradeReceiveMonSpecies EQU $cd25
@@ -14,4 +19,6 @@ DEF wPokedexSeenEnd EQU $d2a1
 DEF wNumBagItems EQU $d2a1
 DEF HS_CELADON_MANSION_EEVEE_GIFT EQU $d52d
 DEF wPlayerStarter EQU $d696
+DEF wBoxCount EQU $d9b2
 DEF wCompletedInGameTradeFlags EQU $d6b6
+DEF wBoxMon1Nick EQU $de64

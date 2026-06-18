@@ -1,11 +1,16 @@
 include "macros/def_banked.asm"
 
+DEF TextBoxBorder EQU $03d2
+DEF PlaceString EQU $0405
 DEF PlayDefaultMusic EQU $0d9b
 DEF ReloadMapData EQU $1b86
 DEF Bankswitch EQU $3620
+DEF YesNoChoice EQU $3636
 DEF FillMemory EQU $372a
 DEF JoypadLowSensitivity EQU $3879
 DEF AddNTimes EQU $3ad1
+DEF HandleMenuInput EQU $3b08
+DEF PrintText EQU $3c79
 DEF RestoreScreenTilesAndReloadTilePatterns EQU $3dee
 DEF GiveItem EQU $3e5e
 DEF GivePokemon EQU $3e78
