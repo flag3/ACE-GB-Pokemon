@@ -38,24 +38,24 @@ Display:
     call PrintHex
     ld   bc,$000c
 .loop:
-    ld   [hl],"│"
+    ld   [hl],'│'
     inc  hl
     ld   a,d
     call PrintHex
     ld   a,e
     call PrintHex
-    ld   [hl],"　"
+    ld   [hl],'　'
     inc  hl
     ld   a,[de]
     call PrintHex
     inc  de
-    ld   [hl],"│"
+    ld   [hl],'│'
     add  hl,bc
     ld   a,h
     cp   $c6
     jr   nz,.loop
     call CloseSRAM
-    ld   a,"▶"
+    ld   a,'▶'
     ld   [wTilemap + $ab],a
     pop  hl
     jr   Display
@@ -124,7 +124,7 @@ PrintHex:
     pop  af
 .digit:
     and  $0f
-    add  a,"０"
-    or   "A"
+    add  a,'０'
+    or   'A'
     ld   [hl+],a
     ret
